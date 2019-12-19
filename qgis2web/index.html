@@ -89,7 +89,7 @@
     <body>
         <div id="map">
             <div class="leaflet-control-attribution leaflet-control">
-                <a id="me" href="mailto:russell@vintrepidconsulting.com?subject= vineyard_map">Created by Russell Moss</a>
+                <a id="me" href="mailto:russell@vintrepidconsulting.com?subject= vineyard_map">Maps created by Russell Moss</a>
 
             </div>
         </div>
@@ -542,7 +542,7 @@
         document.getElementById("all").appendChild(col1);
         document.getElementById("all").appendChild(col2);
         col1.appendChild(mapDiv)
-        var Filters = {"Block name": "str","MUSYM": "str"};
+        var Filters = {"Soil type": "str","Block name": "str"};
         function filterFunc() {
           map.eachLayer(function(lyr){
           if ("options" in lyr && "dataVar" in lyr["options"]){
@@ -633,6 +633,48 @@
         }
             document.getElementById("menu").appendChild(
                 document.createElement("div"));
+            var div_Soiltype = document.createElement('div');
+            div_Soiltype.id = "div_Soil type";
+            div_Soiltype.className= "filterselect";
+            document.getElementById("menu").appendChild(div_Soiltype);
+            sel_Soiltype = document.createElement('select');
+            sel_Soiltype.multiple = true;
+            sel_Soiltype.size = 10;
+            sel_Soiltype.id = "sel_Soil type";
+            var Soiltype_options_str = "<option value='' unselected></option>";
+            sel_Soiltype.onchange = function(){filterFunc()};
+            Soiltype_options_str  += '<option value="Anhalt clay">Anhalt clay</option>';
+            Soiltype_options_str  += '<option value="Bolar clay loam">Bolar clay loam</option>';
+            Soiltype_options_str  += '<option value="Brackett-Rock outcrop-Comfort complex">Brackett-Rock outcrop-Comfort complex</option>';
+            Soiltype_options_str  += '<option value="Comfort-Rock outcrop-Real complex">Comfort-Rock outcrop-Real complex</option>';
+            Soiltype_options_str  += '<option value="Doss silty clay">Doss silty clay</option>';
+            Soiltype_options_str  += '<option value="Eckrant-Rock outcrop association">Eckrant-Rock outcrop association</option>';
+            Soiltype_options_str  += '<option value="Gruene clay">Gruene clay</option>';
+            Soiltype_options_str  += '<option value="Orif">Orif</option>';
+            Soiltype_options_str  += '<option value="Real-Comfort-Doss complex">Real-Comfort-Doss complex</option>';
+            Soiltype_options_str  += '<option value="Rumple-Comfort">Rumple-Comfort</option>';
+            Soiltype_options_str  += '<option value="Sunev clay loam">Sunev clay loam</option>';
+            Soiltype_options_str  += '<option value="Sunev silty clay loam">Sunev silty clay loam</option>';
+            Soiltype_options_str  += '<option value="Tarpley clay">Tarpley clay</option>';
+            sel_Soiltype.innerHTML = Soiltype_options_str;
+            div_Soiltype.appendChild(sel_Soiltype);
+            var lab_Soiltype = document.createElement('div');
+            lab_Soiltype.innerHTML = 'Soil type';
+            lab_Soiltype.className = 'filterlabel';
+            div_Soiltype.appendChild(lab_Soiltype);
+            var reset_Soiltype = document.createElement('div');
+            reset_Soiltype.innerHTML = 'clear filter';
+            reset_Soiltype.className = 'filterlabel';
+            reset_Soiltype.onclick = function() {
+                var options = document.getElementById("sel_Soiltype").options;
+                for (var i=0; i < options.length; i++) {
+                    options[i].selected = false;
+                }
+                filterFunc();
+            };
+            div_Soiltype.appendChild(reset_Soiltype);
+            document.getElementById("menu").appendChild(
+                document.createElement("div"));
             var div_Blockname = document.createElement('div');
             div_Blockname.id = "div_Block name";
             div_Blockname.className= "filterselect";
@@ -670,48 +712,6 @@
                 filterFunc();
             };
             div_Blockname.appendChild(reset_Blockname);
-            document.getElementById("menu").appendChild(
-                document.createElement("div"));
-            var div_MUSYM = document.createElement('div');
-            div_MUSYM.id = "div_MUSYM";
-            div_MUSYM.className= "filterselect";
-            document.getElementById("menu").appendChild(div_MUSYM);
-            sel_MUSYM = document.createElement('select');
-            sel_MUSYM.multiple = true;
-            sel_MUSYM.size = 10;
-            sel_MUSYM.id = "sel_MUSYM";
-            var MUSYM_options_str = "<option value='' unselected></option>";
-            sel_MUSYM.onchange = function(){filterFunc()};
-            MUSYM_options_str  += '<option value="AnB">AnB</option>';
-            MUSYM_options_str  += '<option value="BrB">BrB</option>';
-            MUSYM_options_str  += '<option value="BtD">BtD</option>';
-            MUSYM_options_str  += '<option value="CrD">CrD</option>';
-            MUSYM_options_str  += '<option value="DoC">DoC</option>';
-            MUSYM_options_str  += '<option value="ErG">ErG</option>';
-            MUSYM_options_str  += '<option value="GrC">GrC</option>';
-            MUSYM_options_str  += '<option value="Or">Or</option>';
-            MUSYM_options_str  += '<option value="RUD">RUD</option>';
-            MUSYM_options_str  += '<option value="RcD">RcD</option>';
-            MUSYM_options_str  += '<option value="SuA">SuA</option>';
-            MUSYM_options_str  += '<option value="SuB">SuB</option>';
-            MUSYM_options_str  += '<option value="TaB">TaB</option>';
-            sel_MUSYM.innerHTML = MUSYM_options_str;
-            div_MUSYM.appendChild(sel_MUSYM);
-            var lab_MUSYM = document.createElement('div');
-            lab_MUSYM.innerHTML = 'MUSYM';
-            lab_MUSYM.className = 'filterlabel';
-            div_MUSYM.appendChild(lab_MUSYM);
-            var reset_MUSYM = document.createElement('div');
-            reset_MUSYM.innerHTML = 'clear filter';
-            reset_MUSYM.className = 'filterlabel';
-            reset_MUSYM.onclick = function() {
-                var options = document.getElementById("sel_MUSYM").options;
-                for (var i=0; i < options.length; i++) {
-                    options[i].selected = false;
-                }
-                filterFunc();
-            };
-            div_MUSYM.appendChild(reset_MUSYM);
         L.ImageOverlay.include({
             getBounds: function () {
                 return this._bounds;
