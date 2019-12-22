@@ -112,7 +112,7 @@
 <script src="js/nouislider.min.js"></script>
 <script src="js/wNumb.js"></script>
         <script src="data/Soiltypes_2.js"></script>
-        <script src="data/Blocks_4.js"></script>
+        <script src="data/Blocks_3.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -132,7 +132,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[30.1156152379985,-98.04549641785117],[30.158017788145536,-97.98838544462068]]);
+        }).fitBounds([[30.124516197240602,-98.03604949057979],[30.148126776077145,-98.00424885244074]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
@@ -195,7 +195,8 @@
                         <td>' + (feature.properties['MUSYM'] !== null ? Autolinker.link(feature.properties['MUSYM'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Soil type'] !== null ? Autolinker.link(feature.properties['Soil type'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Soil type</th>\
+                        <td>' + (feature.properties['Soil type'] !== null ? Autolinker.link(feature.properties['Soil type'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -429,12 +430,7 @@
         });
         bounds_group.addLayer(layer_Soiltypes_2);
         map.addLayer(layer_Soiltypes_2);
-        var img_BasicresNDVI81319_3 = 'data/BasicresNDVI81319_3.png';
-        var img_bounds_BasicresNDVI81319_3 = [[30.13162981692826,-98.02872982703119],[30.14300136901276,-98.01076842774131]];
-        var layer_BasicresNDVI81319_3 = new L.imageOverlay(img_BasicresNDVI81319_3, img_bounds_BasicresNDVI81319_3);
-        bounds_group.addLayer(layer_BasicresNDVI81319_3);
-        map.addLayer(layer_BasicresNDVI81319_3);
-        function pop_Blocks_4(feature, layer) {
+        function pop_Blocks_3(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (i in e.target._eventParents) {
@@ -452,46 +448,55 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Block name'] !== null ? Autolinker.link(feature.properties['Block name'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Block name</th>\
+                        <td>' + (feature.properties['Block name'] !== null ? Autolinker.link(feature.properties['Block name'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Blocks_4_0() {
+        function style_Blocks_3_0() {
             return {
-                pane: 'pane_Blocks_4',
+                pane: 'pane_Blocks_3',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(232,113,141,0.0)',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
                 interactive: true,
             }
         }
-        map.createPane('pane_Blocks_4');
-        map.getPane('pane_Blocks_4').style.zIndex = 404;
-        map.getPane('pane_Blocks_4').style['mix-blend-mode'] = 'normal';
-        var layer_Blocks_4 = new L.geoJson(json_Blocks_4, {
+        map.createPane('pane_Blocks_3');
+        map.getPane('pane_Blocks_3').style.zIndex = 403;
+        map.getPane('pane_Blocks_3').style['mix-blend-mode'] = 'normal';
+        var layer_Blocks_3 = new L.geoJson(json_Blocks_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Blocks_4',
-            layerName: 'layer_Blocks_4',
-            pane: 'pane_Blocks_4',
-            onEachFeature: pop_Blocks_4,
-            style: style_Blocks_4_0,
+            dataVar: 'json_Blocks_3',
+            layerName: 'layer_Blocks_3',
+            pane: 'pane_Blocks_3',
+            onEachFeature: pop_Blocks_3,
+            style: style_Blocks_3_0,
         });
-        bounds_group.addLayer(layer_Blocks_4);
-        map.addLayer(layer_Blocks_4);
-        var img_HighresNDVI81319_5 = 'data/HighresNDVI81319_5.png';
-        var img_bounds_HighresNDVI81319_5 = [[30.13162981692826,-98.02872982703119],[30.14300136901276,-98.01076842774131]];
-        var layer_HighresNDVI81319_5 = new L.imageOverlay(img_HighresNDVI81319_5, img_bounds_HighresNDVI81319_5);
-        bounds_group.addLayer(layer_HighresNDVI81319_5);
-        map.addLayer(layer_HighresNDVI81319_5);
+        bounds_group.addLayer(layer_Blocks_3);
+        map.addLayer(layer_Blocks_3);
+        var img_HighresNDVI81319_4 = 'data/HighresNDVI81319_4.png';
+        var img_bounds_HighresNDVI81319_4 = [[30.13162981692826,-98.02872982703119],[30.14300136901276,-98.01076842774131]];
+        var layer_HighresNDVI81319_4 = new L.imageOverlay(img_HighresNDVI81319_4, img_bounds_HighresNDVI81319_4);
+        bounds_group.addLayer(layer_HighresNDVI81319_4);
+        map.addLayer(layer_HighresNDVI81319_4);
+        var img_BasicresNDVI81319_5 = 'data/BasicresNDVI81319_5.png';
+        var img_bounds_BasicresNDVI81319_5 = [[30.13162981692826,-98.02872982703119],[30.14300136901276,-98.01076842774131]];
+        var layer_BasicresNDVI81319_5 = new L.imageOverlay(img_BasicresNDVI81319_5, img_bounds_BasicresNDVI81319_5);
+        bounds_group.addLayer(layer_BasicresNDVI81319_5);
+        map.addLayer(layer_BasicresNDVI81319_5);
+        var img_Mgmtzones_6 = 'data/Mgmtzones_6.png';
+        var img_bounds_Mgmtzones_6 = [[30.13160702461792,-98.02875599928588],[30.1430286304127,-98.01073701268004]];
+        var layer_Mgmtzones_6 = new L.imageOverlay(img_Mgmtzones_6, img_bounds_Mgmtzones_6);
+        bounds_group.addLayer(layer_Mgmtzones_6);
+        map.addLayer(layer_Mgmtzones_6);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -503,7 +508,21 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{"High res NDVI 8/13/19": layer_HighresNDVI81319_5,'<img src="legend/Blocks_4.png" /> Blocks': layer_Blocks_4,"Basic res NDVI 8/13/19": layer_BasicresNDVI81319_3,'Soil types<br /><table><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_AnB0.png" /></td><td>AnB</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_BrB1.png" /></td><td>BrB</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_BtD2.png" /></td><td>BtD</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_CrD3.png" /></td><td>CrD</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_DoC4.png" /></td><td>DoC</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_ErG5.png" /></td><td>ErG</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_GrC6.png" /></td><td>GrC</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_Or7.png" /></td><td>Or</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_RcD8.png" /></td><td>RcD</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_RUD9.png" /></td><td>RUD</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_SuA10.png" /></td><td>SuA</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_SuB11.png" /></td><td>SuB</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_TaB12.png" /></td><td>TaB</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_13.png" /></td><td></td></tr></table>': layer_Soiltypes_2,"Basemap": layer_Basemap_1,"OpenStreetMap.Mapnik": layer_OpenStreetMapMapnik_0,}).addTo(map);
+        L.control.layers(baseMaps,{"Mgmt. zones": layer_Mgmtzones_6,"Basic res NDVI 8/13/19": layer_BasicresNDVI81319_5,"High res NDVI 8/13/19": layer_HighresNDVI81319_4,'<img src="legend/Blocks_3.png" /> Blocks': layer_Blocks_3,'Soil types<br /><table><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_AnB0.png" /></td><td>AnB</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_BrB1.png" /></td><td>BrB</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_BtD2.png" /></td><td>BtD</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_CrD3.png" /></td><td>CrD</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_DoC4.png" /></td><td>DoC</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_ErG5.png" /></td><td>ErG</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_GrC6.png" /></td><td>GrC</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_Or7.png" /></td><td>Or</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_RcD8.png" /></td><td>RcD</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_RUD9.png" /></td><td>RUD</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_SuA10.png" /></td><td>SuA</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_SuB11.png" /></td><td>SuB</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_TaB12.png" /></td><td>TaB</td></tr><tr><td style="text-align: center;"><img src="legend/Soiltypes_2_13.png" /></td><td></td></tr></table>': layer_Soiltypes_2,"Basemap": layer_Basemap_1,"OpenStreetMap.Mapnik": layer_OpenStreetMapMapnik_0,}).addTo(map);
+        map.on("zoomend", function(){
+
+                if (map.hasLayer(layer_Blocks_3)) {
+                    if (map.getZoom() <= 15 && map.getZoom() >= 16) {
+                        layer_Blocks_3.eachLayer(function (layer) {
+                            layer.openTooltip();
+                        });
+                    } else {
+                        layer_Blocks_3.eachLayer(function (layer) {
+                            layer.closeTooltip();
+                        });
+                    }
+                }
+        });
         setBounds();
         var i = 0;
         layer_Soiltypes_2.eachLayer(function(layer) {
@@ -518,8 +537,32 @@
               addLabel(layer, i);
               i++;
         });
+        var i = 0;
+        layer_Blocks_3.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Block name'] !== null?String('<div style="color: #000000; font-size: 10pt; font-family: \'MS Shell Dlg 2\', sans-serif;">' + layer.feature.properties['Block name']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Blocks_3'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+                if (map.hasLayer(layer_Blocks_3)) {
+                    if (map.getZoom() <= 15 && map.getZoom() >= 16) {
+                        layer_Blocks_3.eachLayer(function (layer) {
+                            layer.openTooltip();
+                        });
+                    } else {
+                        layer_Blocks_3.eachLayer(function (layer) {
+                            layer.closeTooltip();
+                        });
+                    }
+                }
         map.addControl(new L.Control.Search({
-            layer: layer_Blocks_4,
+            layer: layer_Blocks_3,
             initial: false,
             hideMarkerOnCollapse: true,
             propertyName: 'Block name'}));
@@ -544,7 +587,7 @@
         document.getElementById("all").appendChild(col1);
         document.getElementById("all").appendChild(col2);
         col1.appendChild(mapDiv)
-        var Filters = {"Soil type": "str","Block name": "str"};
+        var Filters = {"Block name": "str","Soil type": "str"};
         function filterFunc() {
           map.eachLayer(function(lyr){
           if ("options" in lyr && "dataVar" in lyr["options"]){
@@ -635,6 +678,45 @@
         }
             document.getElementById("menu").appendChild(
                 document.createElement("div"));
+            var div_Blockname = document.createElement('div');
+            div_Blockname.id = "div_Block name";
+            div_Blockname.className= "filterselect";
+            document.getElementById("menu").appendChild(div_Blockname);
+            sel_Blockname = document.createElement('select');
+            sel_Blockname.multiple = true;
+            sel_Blockname.size = 10;
+            sel_Blockname.id = "sel_Block name";
+            var Blockname_options_str = "<option value='' unselected></option>";
+            sel_Blockname.onchange = function(){filterFunc()};
+            Blockname_options_str  += '<option value="Block 6">Block 6</option>';
+            Blockname_options_str  += '<option value="El Ocho">El Ocho</option>';
+            Blockname_options_str  += '<option value="Frenchman&apos;s Corner">Frenchman&apos;s Corner</option>';
+            Blockname_options_str  += '<option value="Jay Block">Jay Block</option>';
+            Blockname_options_str  += '<option value="Lower Block">Lower Block</option>';
+            Blockname_options_str  += '<option value="Pumphouse Grenache">Pumphouse Grenache</option>';
+            Blockname_options_str  += '<option value="Pumphouse Syrah">Pumphouse Syrah</option>';
+            Blockname_options_str  += '<option value="Pumphouse Tempranillo">Pumphouse Tempranillo</option>';
+            Blockname_options_str  += '<option value="Scott&apos;s Cabernet Sauv">Scott&apos;s Cabernet Sauv</option>';
+            Blockname_options_str  += '<option value="Upper Syrah">Upper Syrah</option>';
+            sel_Blockname.innerHTML = Blockname_options_str;
+            div_Blockname.appendChild(sel_Blockname);
+            var lab_Blockname = document.createElement('div');
+            lab_Blockname.innerHTML = 'Block name';
+            lab_Blockname.className = 'filterlabel';
+            div_Blockname.appendChild(lab_Blockname);
+            var reset_Blockname = document.createElement('div');
+            reset_Blockname.innerHTML = 'clear filter';
+            reset_Blockname.className = 'filterlabel';
+            reset_Blockname.onclick = function() {
+                var options = document.getElementById("sel_Blockname").options;
+                for (var i=0; i < options.length; i++) {
+                    options[i].selected = false;
+                }
+                filterFunc();
+            };
+            div_Blockname.appendChild(reset_Blockname);
+            document.getElementById("menu").appendChild(
+                document.createElement("div"));
             var div_Soiltype = document.createElement('div');
             div_Soiltype.id = "div_Soil type";
             div_Soiltype.className= "filterselect";
@@ -675,59 +757,20 @@
                 filterFunc();
             };
             div_Soiltype.appendChild(reset_Soiltype);
-            document.getElementById("menu").appendChild(
-                document.createElement("div"));
-            var div_Blockname = document.createElement('div');
-            div_Blockname.id = "div_Block name";
-            div_Blockname.className= "filterselect";
-            document.getElementById("menu").appendChild(div_Blockname);
-            sel_Blockname = document.createElement('select');
-            sel_Blockname.multiple = true;
-            sel_Blockname.size = 10;
-            sel_Blockname.id = "sel_Block name";
-            var Blockname_options_str = "<option value='' unselected></option>";
-            sel_Blockname.onchange = function(){filterFunc()};
-            Blockname_options_str  += '<option value="Block 6">Block 6</option>';
-            Blockname_options_str  += '<option value="El Ocho">El Ocho</option>';
-            Blockname_options_str  += '<option value="Frenchman&apos;s Corner">Frenchman&apos;s Corner</option>';
-            Blockname_options_str  += '<option value="Jay Block">Jay Block</option>';
-            Blockname_options_str  += '<option value="Lower Block">Lower Block</option>';
-            Blockname_options_str  += '<option value="Pumphouse Grenache">Pumphouse Grenache</option>';
-            Blockname_options_str  += '<option value="Pumphouse Syrah">Pumphouse Syrah</option>';
-            Blockname_options_str  += '<option value="Pumphouse Tempranillo">Pumphouse Tempranillo</option>';
-            Blockname_options_str  += '<option value="Scott&apos;s Cabernet Sauv">Scott&apos;s Cabernet Sauv</option>';
-            Blockname_options_str  += '<option value="Upper Syrah">Upper Syrah</option>';
-            sel_Blockname.innerHTML = Blockname_options_str;
-            div_Blockname.appendChild(sel_Blockname);
-            var lab_Blockname = document.createElement('div');
-            lab_Blockname.innerHTML = 'Block name';
-            lab_Blockname.className = 'filterlabel';
-            div_Blockname.appendChild(lab_Blockname);
-            var reset_Blockname = document.createElement('div');
-            reset_Blockname.innerHTML = 'clear filter';
-            reset_Blockname.className = 'filterlabel';
-            reset_Blockname.onclick = function() {
-                var options = document.getElementById("sel_Blockname").options;
-                for (var i=0; i < options.length; i++) {
-                    options[i].selected = false;
-                }
-                filterFunc();
-            };
-            div_Blockname.appendChild(reset_Blockname);
         L.ImageOverlay.include({
             getBounds: function () {
                 return this._bounds;
             }
         });
-        resetLabels([layer_Soiltypes_2]);
+        resetLabels([layer_Soiltypes_2,layer_Blocks_3]);
         map.on("zoomend", function(){
-            resetLabels([layer_Soiltypes_2]);
+            resetLabels([layer_Soiltypes_2,layer_Blocks_3]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_Soiltypes_2]);
+            resetLabels([layer_Soiltypes_2,layer_Blocks_3]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_Soiltypes_2]);
+            resetLabels([layer_Soiltypes_2,layer_Blocks_3]);
         });
         </script>
     </body>
